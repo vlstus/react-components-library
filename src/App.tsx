@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
+import Multiselect from "./multiselect/Multiselect";
+import {OnRemoveDiff, OnSelectDiff} from "./multiselect/MultiselectTypes";
 
 function App() {
+    const mockEventHandler = (diff: OnSelectDiff | OnRemoveDiff) => console.log(diff)
     return (
-        <div className="components">
-            <header className="components-test-bed-header">
-                <p>
-                    Components:
-                </p>
-            </header>
-        </div>
+        <Multiselect
+            availableOptions={[]}
+            selectedOptions={[]}
+            onSelect={mockEventHandler}
+            onRemove={mockEventHandler}/>
     );
 }
 
