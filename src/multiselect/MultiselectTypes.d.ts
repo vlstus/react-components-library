@@ -5,8 +5,9 @@ interface MultiselectProperties {
     onRemove: (selectionDifference: OnRemoveDiff) => void
 }
 
-type OnSelectDiff = { selectedOptions: SimpleOption[], selectedOption: SimpleOption }
-type OnRemoveDiff = { selectedOptions: SimpleOption, removedOption: SimpleOption }
+type AfterChangeState = { selectedOptions: SimpleOption[], remainingOptions: SimpleOption[] }
+type OnSelectDiff = AfterChangeState & { selectedOption?: SimpleOption }
+type OnRemoveDiff = AfterChangeState & { removedOption?: SimpleOption }
 type SimpleOption = Option<number, string, string>
 type Option<K, V, L> = { id: K, label: L, value: V }
 
