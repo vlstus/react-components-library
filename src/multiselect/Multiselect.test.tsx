@@ -7,6 +7,7 @@ test('renders learn react link', () => {
     const mockEventHandler = (diff: OnSelectDiff | OnRemoveDiff) => console.log(diff)
     const {container} = render(<Multiselect availableOptions={[]} selectedOptions={[]}
                                             onSelect={mockEventHandler}
-                                            onRemove={mockEventHandler}/>)
+                                            onRemove={mockEventHandler}
+                                            isMultiSelect={false}/>)
     expect(container).toBeInTheDocument();
 });

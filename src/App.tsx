@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
 import Multiselect from "./multiselect/Multiselect";
-import {OnRemoveDiff, OnSelectDiff} from "./multiselect/MultiselectTypes";
 import {SimpleOption} from "./multiselect/MultiselectTypes";
 
 function App() {
@@ -26,7 +25,8 @@ function App() {
             onRemove={removeDiff => {
                 setSelectedOptions(removeDiff.selectedOptions);
                 setAvailableOptions(removeDiff.remainingOptions);
-            }}/>
+            }}
+            isMultiSelect={true}/>
     );
 }
 

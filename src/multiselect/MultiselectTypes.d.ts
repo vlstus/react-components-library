@@ -2,7 +2,8 @@ interface MultiselectProperties {
     availableOptions: SimpleOption[],
     selectedOptions: SimpleOption[],
     onSelect: (selectionDifference: OnSelectDiff) => void,
-    onRemove: (selectionDifference: OnRemoveDiff) => void
+    onRemove: (selectionDifference: OnRemoveDiff) => void,
+    isMultiSelect: boolean
 }
 
 type AfterChangeState = { selectedOptions: SimpleOption[], remainingOptions: SimpleOption[] }

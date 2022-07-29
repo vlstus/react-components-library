@@ -41,7 +41,8 @@ class Multiselect extends React.Component<Readonly<MultiselectProperties>> {
                     })}
                 </div>
                 <div>
-                    <span><select multiple={true} onChange={this.handleSelect}>
+                    <span><select multiple={this.props.isMultiSelect} onChange={this.handleSelect}>
+                        {this.props.isMultiSelect ? <option>Available:</option> : <option>---SELECT--</option>}
                         {this.props.availableOptions.map(option => {
                             return <option key={option.id} value={option.value}>{option.label}</option>
                         })}
