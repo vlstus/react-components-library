@@ -1,0 +1,27 @@
+div.multiselect-container {
+    background: rgba(55, 55, 55, 0.3);
+    border: 5px inset;
+    margin: 20px 30px 40px 50px;
+    padding: 5px 5px 5px 5px;
+    height: 75%;
+    width: 75%;
+    outline: 5px solid gray;
+}
+
+div.selected-container, div.available-container {
+    margin: 2px 3px 4px 5px;
+    padding: 1px 1px 1px 1px;
+    height: 45%;
+    width: 45%;
+}
+
+div.selected-container {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+span.selected-button-container, span.available-select-container {
+    margin: 2px 3px 4px 5px;
+    padding: 1px 1px 1px 1px;
+    height: 45%;
+    width: 45%;
+}

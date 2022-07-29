@@ -1,5 +1,6 @@
 import React from "react";
 import {MultiselectProperties} from "./MultiselectTypes";
+import './Multiselect.css';
 
 class Multiselect extends React.Component<Readonly<MultiselectProperties>> {
 
@@ -33,21 +34,25 @@ class Multiselect extends React.Component<Readonly<MultiselectProperties>> {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className='multiselect-container'>
+                <div className='selected-container'>
+                    <label>Selected: </label>
                     {this.props.selectedOptions.map(option => {
-                        return <span><button data-id={option.id} key={option.id}
-                                             onClick={this.handleRemove}>{`${option.label} X`}</button></span>
-                    })}
-                </div>
-                <div>
-                    <span><select multiple={this.props.isMultiSelect} onChange={this.handleSelect}>
+                        return <span className='selected-button-container'>
+                            <button className='selected-button'
+                                    data-id={option.id} key={option.id}
+                                    onClick={this.handleRemove}>{`${option.label} X`}</button></span>
+                    })}</div>
+                <div className='available-container'>
+                    <span className='available-select-container'>
+                        <select className='available-select' multiple={this.props.isMultiSelect}
+                                onChange={this.handleSelect}>
                         {this.props.isMultiSelect ? <option>Available:</option> : <option>---SELECT--</option>}
-                        {this.props.availableOptions.map(option => {
-                            return <option key={option.id} value={option.value}>{option.label}</option>
-                        })}
-                    </select></span>
-                </div>
+                            {this.props.availableOptions.map(option => {
+                                return <option className='available-option' key={option.id}
+                                               value={option.value}>{option.label}</option>
+                            })}
+                    </select></span></div>
             </div>
         );
     }
