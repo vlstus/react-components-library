@@ -6,10 +6,24 @@ interface MultiselectProperties {
     isMultiSelect: boolean
 }
 
+interface MultiselectAdapterProperties {
+    availableOptions: SimpleOption[],
+    selectedOptions: SimpleOption[],
+    isMultiSelect: boolean
+}
+
+type MultiselectAdapterState = { availableOptions: SimpleOption[], selectedOptions: SimpleOption[] }
 type AfterChangeState = { selectedOptions: SimpleOption[], remainingOptions: SimpleOption[] }
 type OnSelectDiff = AfterChangeState & { selectedOption?: SimpleOption }
 type OnRemoveDiff = AfterChangeState & { removedOption?: SimpleOption }
 type SimpleOption = Option<number, string, string>
 type Option<K, V, L> = { id: K, label: L, value: V }
 
-export {MultiselectProperties, SimpleOption, OnSelectDiff, OnRemoveDiff}
+export {
+    MultiselectProperties,
+    MultiselectAdapterProperties,
+    MultiselectAdapterState,
+    SimpleOption,
+    OnSelectDiff,
+    OnRemoveDiff
+}

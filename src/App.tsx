@@ -1,31 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import Multiselect from "./multiselect/Multiselect";
-import {SimpleOption} from "./multiselect/MultiselectTypes";
+import MultiselectAdapter from "./multiselect/MultiselectAdapter";
 
-function App() {
-    const [availableOptions, setAvailableOptions] = useState<SimpleOption[]>([{
+const availableOptions = [
+    {
         id: 1,
         label: 'Option 1',
         value: 'optionOne'
-    }, {id: 2, label: 'Option 2', value: 'optionTwo'}]);
-    const [selectedOptions, setSelectedOptions] = useState<SimpleOption[]>([{
+    },
+    {
+        id: 2,
+        label: 'Option 2',
+        value: 'optionTwo'
+    }];
+const selectedOptions = [
+    {
         id: 3,
         label: 'Option 3',
         value: 'optionThree'
-    }]);
+    }];
+
+function App() {
     return (
-        <Multiselect
-            availableOptions={[...availableOptions]}
-            selectedOptions={[...selectedOptions]}
-            onSelect={selectDiff => {
-                setSelectedOptions(selectDiff.selectedOptions);
-                setAvailableOptions(selectDiff.remainingOptions);
-            }}
-            onRemove={removeDiff => {
-                setSelectedOptions(removeDiff.selectedOptions);
-                setAvailableOptions(removeDiff.remainingOptions);
-            }}
+        <MultiselectAdapter
+            availableOptions={availableOptions}
+            selectedOptions={selectedOptions}
             isMultiSelect={true}/>
     );
 }
