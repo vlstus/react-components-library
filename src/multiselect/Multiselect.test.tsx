@@ -1,7 +1,7 @@
-import React from 'react';
-import {render} from '@testing-library/react';
-import Multiselect from "./Multiselect";
-import {OnRemoveDiff, OnSelectDiff} from "./MultiselectTypes";
+import React from 'react'
+import {render} from '@testing-library/react'
+import Multiselect from "./Multiselect"
+import {OnRemoveDiff, OnSelectDiff} from "./MultiselectTypes"
 
 test('renders learn react link', () => {
     const mockEventHandler = (diff: OnSelectDiff | OnRemoveDiff) => console.log(diff)
@@ -9,5 +9,5 @@ test('renders learn react link', () => {
                                             onSelect={mockEventHandler}
                                             onRemove={mockEventHandler}
                                             isMultiSelect={false}/>)
-    expect(container).toBeInTheDocument();
-});
+    expect(container).toBeInTheDocument()
+})

@@ -1,15 +1,22 @@
-interface MultiselectProperties {
+import {ReactElement} from "react"
+
+interface OptionsAware {
     availableOptions: SimpleOption[],
-    selectedOptions: SimpleOption[],
-    onSelect: (selectionDifference: OnSelectDiff) => void,
-    onRemove: (selectionDifference: OnRemoveDiff) => void,
+    selectedOptions: SimpleOption[]
+}
+
+interface MultiselectRenderingParametersAware {
     isMultiSelect: boolean
 }
 
-interface MultiselectAdapterProperties {
-    availableOptions: SimpleOption[],
-    selectedOptions: SimpleOption[],
-    isMultiSelect: boolean
+interface MultiselectProperties extends OptionsAware, MultiselectRenderingParametersAware {
+    onSelect?: (selectionDifference: OnSelectDiff) => void,
+    onRemove?: (selectionDifference: OnRemoveDiff) => void,
+}
+
+interface MultiselectAdapterProperties extends OptionsAware, MultiselectRenderingParametersAware {
+    onSelectionSubmit?: (selection: SimpleOption[]) => void,
+    children?: ReactElement | ReactElement[]
 }
 
 type MultiselectAdapterState = { availableOptions: SimpleOption[], selectedOptions: SimpleOption[] }

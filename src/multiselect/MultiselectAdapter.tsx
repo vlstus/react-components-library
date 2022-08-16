@@ -1,38 +1,25 @@
-import React from "react";
-import {MultiselectAdapterProperties, MultiselectAdapterState, MultiselectProperties} from "./MultiselectTypes";
-import Multiselect from "./Multiselect";
+import React, {useState} from "react"
+import {MultiselectAdapterProperties} from "./MultiselectTypes"
+import Multiselect from "./Multiselect"
 
-class MultiselectAdapter extends React.Component<Readonly<MultiselectAdapterProperties>, MultiselectAdapterState> {
-
-    constructor(props: Readonly<MultiselectProperties>) {
-        super(props);
-        this.state = {
-            availableOptions: props.availableOptions,
-            selectedOptions: props.selectedOptions
-        }
-    }
-
-    render() {
-        return (
-            <Multiselect
-                availableOptions={[...this.state.availableOptions]}
-                selectedOptions={[...this.state.selectedOptions]}
-                onSelect={selectDiff => {
-                    this.setState({
-                        selectedOptions: selectDiff.selectedOptions,
-                        availableOptions: selectDiff.remainingOptions
-                    });
-                }}
-                onRemove={removeDiff => {
-                    this.setState({
-                        selectedOptions: removeDiff.selectedOptions,
-                        availableOptions: removeDiff.remainingOptions
-                    })
-                }}
-                isMultiSelect={this.props.isMultiSelect}/>
-        );
-    }
-
+const MultiselectAdapter = (props: Readonly<MultiselectAdapterProperties>) => {
+    const [availableOptions, setAvailableOptions] = useState(props.availableOptions.filter(option => props.selectedOptions.every(selectedOption => selectedOption.id !== option.id)).sort((first, second) => first.label.localeCompare(second.label)))
+    const [selectedOptions, setSelectedOptions] = useState(props.selectedOptions)
+    return (<><Multiselect
+            availableOptions={[...availableOptions]}
+            selectedOptions={[...selectedOptions]}
+            onSelect={selectDiff => {
+                setSelectedOptions(selectDiff.selectedOptions)
+                setAvailableOptions(selectDiff.remainingOptions)
+            }}
+            onRemove={removeDiff => {
+                setSelectedOptions(removeDiff.selectedOptions)
+                setAvailableOptions(removeDiff.remainingOptions)
+            }}
+            isMultiSelect={props.isMultiSelect}/>
+            <div>{props.children}</div>
+        </>
+    )
 }
 
 export default MultiselectAdapter;

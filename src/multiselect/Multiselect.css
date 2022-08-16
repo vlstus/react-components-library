@@ -10,7 +10,7 @@ div.multiselect-container {
 
 div.selected-container, div.available-container {
     margin: 2px 3px 4px 5px;
-    padding: 1px 1px 1px 1px;
+    padding: 2px 2px 2px 2px;
     height: 45%;
     width: 45%;
 }
